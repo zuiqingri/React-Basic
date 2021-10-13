@@ -34,6 +34,7 @@ function App() {
       {/* <Clock date={new Date()}/> */}
       <Clock />
       <ApiExample />
+      <EventHandling />
     </div>
   );
 }
@@ -173,6 +174,30 @@ class ApiExample extends React.Component{
     )
   }
 }
+
+class EventHandling extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      isToggleOn:true
+    }
+    this.handleClick=this.handleClick.bind(this);
+  }
+ // handleClick=()=>{   //bindling
+    handleClick(){
+    this.setState(state=>({
+      isToggleOn:!this.state.isToggleOn
+    }))
+  }
+  render(){
+    return(
+      <button onClick={this.handleClick}>
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      </button>
+    )
+  }
+}
+
 
 export default App;
 
